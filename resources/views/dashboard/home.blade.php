@@ -198,7 +198,12 @@
         <a href="#"><i class="fas fa-users icon-box"></i> Users</a>
         <a href="#"><i class="fas fa-cogs icon-box"></i> Settings</a>
         <a href="#"><i class="fas fa-file-alt icon-box"></i> Reports</a>
-        <a href="{{ route('logout') }}"><i class="fas fa-sign-out-alt icon-box"></i> Log Out</a>
+        @if (auth()->check())
+            <p>{{auth()->user()->name}}</p>
+            <a href="{{ route('logout') }}"><i class="fas fa-sign-out-alt icon-box"></i> Log Out</a>
+        @else
+            <a href="{{ route('login') }}"><i class="fas fa-sign-out-alt icon-box"></i> Sign in</a>
+        @endif
     </div>
 
     <!-- Content -->
